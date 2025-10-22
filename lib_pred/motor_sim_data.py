@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
-
+from tabulate import tabulate
 # Function to simulate motor data with outliers, drift, and failure regions
 def simulate_motor_data(
     n_samples=3600, 
@@ -93,14 +93,14 @@ plt.scatter(df_example.loc[df_example['label']==2, 'time_min'],
 plt.xlabel('Time (minutes)')
 plt.legend()
 plt.title('Simulated Motor Sensor Data with Random Outliers (Motor 1)')
-plt.show()
-
-from tabulate import tabulate
+plt.savefig("motor_1.png")
+print("Plot saved as motor_1.png")
 
 print("Simulated Multi-Motor Dataset:")
 print(tabulate(full_df, headers='keys', tablefmt='psql'))
 
 #---------------------------------------------------------------------------------------
+# Visualization: all motors
 # Load the CSV
 full_df = pd.read_csv("multi_motor_data.csv")
 
